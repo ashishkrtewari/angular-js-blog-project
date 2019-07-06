@@ -1,0 +1,26 @@
+<div>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4">Welcome to our Blog</h1>
+			<p class="lead">This project showcases the basic concepts of Angular</p>
+		</div>
+	</div>
+
+	<div class="d-flex justify-content-center mb-4">
+		<div class="btn-group btn-group-toggle container col-sm-6 col-lg-4" data-toggle="buttons">
+			<button type="button" class="btn btn-secondary {{selectedView === 'card' ? 'active': ''}}" (click)="handleViewChange('card')">
+        Card Design
+      </button>
+      <button type="button" class="btn btn-secondary {{selectedView === 'row' ? 'active': ''}}" (click)="handleViewChange('row')">
+        Row Design
+      </button>
+    </div>
+  </div>
+
+  <div class="home-container row d-flex justify-content-center">
+    <a *ngFor="let post of posts" class="{{'col-sm-10 col-lg-5 mb-3 ' +  (selectedView === 'card' ? 'col-md-5' : '') }}"
+      routerLink="post">
+      <app-post-preview [post]="post" (click)="setSelectedPost(post)"></app-post-preview>
+    </a>
+  </div>
+</div>
